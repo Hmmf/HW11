@@ -109,7 +109,7 @@ string numberComparer(string first, string second)
         {
             if(first[i] != second[i])
             {
-                first[i] > second[i] ? check = 1 : check = 0;
+                check = first[i] > second[i];
                 break;
             }
         }
@@ -122,7 +122,7 @@ string numberComparer(string first, string second)
             {
                 if(first[i] != second[i])
                 {
-                    first[i] > second[i] ? check = 1 : check = 0;
+                    check = first[i] > second[i];
                     break;
                 }
             }
