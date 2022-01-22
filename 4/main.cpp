@@ -91,6 +91,8 @@ string numberComparer(string first, string second)
 {
     bool check;//true - |first| > |Second|: false - |first| < |Second|
     bool allMinus = (first[0] == '-' && second[0] == '-');//first < 0 && second < 0
+    if (leftPart(first) == "0" && rightPart(first) == "0" && leftPart(second) == "0" && rightPart(second) == "0")
+        return "Equal";
     if (!numberCheck(first) || !numberCheck(second))
         return "ERROR";
     if ((first[0] == '-' || second[0] == '-') && !allMinus)
