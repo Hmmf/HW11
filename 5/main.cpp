@@ -38,24 +38,48 @@ int charCount (string str, char symb)
 string winCheck(string str)
 {
     int petyaW = 0, vanyaW = 0;
+    bool petyaWinCount = false, vanyaWinCount = false;
     if (!correctField(str))
         return "Incorrect";
     for (int i = 0; i < 3; i++)
         if (symbol(str, i, 0) == symbol(str, i, 1) && symbol(str, i, 2) == symbol(str, i, 1) && symbol(str, i, 0) != '.')
         {
             if (symbol(str, i, 0) == 'X')
+            {
                 petyaW++;
+                if (petyaWinCount)
+                    return "incorrect";
+                petyaWinCount = true;
+            }
             else
+            {
                 vanyaW++;
+                if (vanyaWinCount)
+                    return "incorrect";
+                vanyaWinCount = true;
+            }
+            
         }
 
+    petyaWinCount = false; 
+    vanyaWinCount = false;
     for (int i = 0; i < 3; i++)
         if (symbol(str, 0, i) == symbol(str, 1, i) && symbol(str, 2, i) == symbol(str, 1, i) && symbol(str, 0, i) != '.')
         {
             if (symbol(str, 0, i) == 'X')
+            {
                 petyaW++;
+                if (petyaWinCount)
+                    return "incorrect";
+                petyaWinCount = true;
+            }
             else
+            {
                 vanyaW++;
+                if (vanyaWinCount)
+                    return "incorrect";
+                vanyaWinCount = true;
+            }
         }
 
     if (symbol(str, 0, 0) == symbol(str, 1, 1) && symbol(str, 2, 2) == symbol(str, 1, 1) && symbol(str, 0, 0) != '.')
@@ -74,9 +98,9 @@ string winCheck(string str)
             vanyaW++;
     }
 
-    if (petyaW + vanyaW > 1)
+    if (petyaW + vanyaW > 2)
         return "Incorrect";
-    if (petyaW + vanyaW == 1)
+    if (max(petyaW, vanyaW) >= 0 && min (petyaW, vanyaW) == 0)
         return petyaW > vanyaW ? "Petya won" : "Vanya won";
     else return "Nobody";
 }
