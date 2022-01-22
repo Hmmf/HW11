@@ -13,8 +13,7 @@ bool dotCheck (string ip)
         if (i == 0 || i == ip.size() - 1 ||  ip[i - 1] == '.' || ip[i + 1] == '.')
             return false;
     }
-    if (c != 4) return false;
-    else return true;
+    return c == 4;
 }
 
 
